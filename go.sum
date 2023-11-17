@@ -1,0 +1,4 @@
+github.com/ecnepsnai/craigslist v0.0.6 h1:bUsox3QzX456J0IxeuzjOv0i4YyVZvE0JdAusKlVp88=
+github.com/ecnepsnai/craigslist v0.0.6/go.mod h1:cJ4N5aEIWhoHcUqv7N4Tv0+fB66GnU3NLdffJTWuCpE=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
