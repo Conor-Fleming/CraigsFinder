@@ -2,36 +2,40 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/ecnepsnai/craigslist"
+	"github.com/charmbracelet/bubbles/list"
+	tea "github.com/charmbracelet/bubbletea"
 )
 
 func main() {
-
-	// Perform the search
-	postings, err := craigslist.Search("apa", "2 bed", craigslist.LocationParams{
-		AreaID:         1, //need a comprehensive list of AreaIDs, they dont seem so easy to find
-		Latitude:       37.7749,
-		Longitude:      122.4194,
-		SearchDistance: 30, //in miles
-	})
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
+	items := []list.Item{
+		cli.item("Ramen"),
+		item("Tomato Soup"),
+		item("Hamburgers"),
+		item("Cheeseburgers"),
+		item("Currywurst"),
+		item("Okonomiyaki"),
+		item("Pasta"),
+		item("Fillet Mignon"),
+		item("Caviar"),
+		item("Just Wine"),
 	}
 
-	if len(postings) == 0 {
-		fmt.Println("No results")
-		return
-	}
+	const defaultWidth = 20
 
-	// Print the results
-	example, err := postings[0].Posting()
-	if err != nil {
-		fmt.Println("there was an error when getting posting detals", err)
-	}
+	l := list.New(items, cli.itemDelegate{}, defaultWidth, cli.listHeight)
+	l.Title = "What do you want for dinner?"
+	l.SetShowStatusBar(false)
+	l.SetFilteringEnabled(false)
+	l.Styles.Title = cli.titleStyle
+	l.Styles.PaginationStyle = cli.paginationStyle
+	l.Styles.HelpStyle = cli.helpStyle
 
-	fmt.Printf("%s - $%d\n", example.Title, example.Price)
-	fmt.Printf("--------\n")
-	fmt.Printf("%s\n", example.Body)
+	m := cli.model{list: l}
+
+	if _, err := tea.NewProgram(m).Run(); err != nil {
+		fmt.Println("Error running program:", err)
+		os.Exit(1)
+	}
 }
