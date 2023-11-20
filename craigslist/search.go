@@ -7,7 +7,11 @@ type Search struct {
 	options  craigslist.SearchOptions
 }
 
-func (s *Search) NewSearch() Search {
-
-	return Search{}
+func (s *Search) NewSearch(location []string, options craigslist.SearchOptions) Search {
+	return Search{
+		location: location,
+		options:  options,
+	}
 }
+
+func RunSearch()

@@ -71,3 +71,7 @@ func GetUserStateChoice(states map[string]State) (*State, error) {
 
 	return &chosenState, nil
 }
+
+func GetUserAreaChoice(area *Area) {
+	//might need to rethink this
+}
