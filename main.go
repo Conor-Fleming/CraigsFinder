@@ -1,26 +1,42 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	"github.com/Conor-Flemign/CraigsFinder/craigslist"
 )
 
 func main() {
-	// Populate site data
-	allStates, err := craigslist.PopulateSiteData()
+	configFile := "config.yml"
+
+	cfg, err := loadConfig(configFile)
+	if err != nil {
+		fmt.Println("Error loading config:", err)
+		return
+	}
+
+	// Define command line flags
+	hostnamePtr := flag.String("hostname", cfg.DefaultHostname, "Hostname for craigslist area details")
+	flag.Parse()
+
+	areas, err := craigslist.FetchAreas(cfg.APIURL)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
 
-	// Display available states
-	chosenState, err := craigslist.GetUserStateChoice(allStates)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
+	areasMap := make(map[string]craigslist.Area)
+	for _, a := range areas {
+		areasMap[a.Hostname] = a
 	}
 
-	fmt.Println("Chosen State:", chosenState.RegName)
-	// Use chosenState for further operations
+	// Accessing values in the map by provided or default hostname
+	if area, ok := areasMap[*hostnamePtr]; ok {
+		fmt.Printf("Area: %s, ID: %d, Latitude: %f, Longitude: %f\n", area.Description, area.AreaID, area.Latitude, area.Longitude)
+	} else {
+		fmt.Println("Area not found for provided hostname. Using default values.")
+		defaultArea := areasMap[cfg.DefaultHostname]
+		fmt.Printf("Default Area: %s, ID: %d, Latitude: %f, Longitude: %f\n", defaultArea.Description, defaultArea.AreaID, defaultArea.Latitude, defaultArea.Longitude)
+	}
 }

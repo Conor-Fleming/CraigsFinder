@@ -3,6 +3,7 @@ module github.com/Conor-Flemign/CraigsFinder
 go 1.21.4
 
 require (
+	github.com/Tmunayyer/go-craigslist v0.0.0-20200810230223-7746f3f48c03
 	github.com/charmbracelet/bubbletea v0.24.2
 	github.com/sosedoff/go-craigslist v0.0.0-20200522142400-ab823b88321b
 )
@@ -33,6 +34,7 @@ require (
 	golang.org/x/crypto v0.9.0 // indirect
 	golang.org/x/net v0.10.0 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
