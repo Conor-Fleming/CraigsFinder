@@ -1,0 +1,15 @@
+api_url: http://reference.craigslist.org/Areas
+
+searches:
+  - area: sfbay
+    category: cta
+    term: honda
+   
+  - area: seattle
+    category: cta
+    term: toyota
+
+  -area: chico
+   category: cta
+   term: hellcat
+

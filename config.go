@@ -7,9 +7,15 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+type Search struct {
+	Area     string `yaml:"area"`
+	Category string `yaml:"category"`
+	Term     string `yaml:"term"`
+}
+
 type Config struct {
-	DefaultHostname string `yaml:"default_hostname"`
-	APIURL          string `yaml:"api_url"`
+	Searches []Search `yaml:"searches"`
+	APIURL   string   `yaml:"api_url"`
 }
 
 func loadConfig(filename string) (Config, error) {
