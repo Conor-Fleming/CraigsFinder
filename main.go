@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/Conor-Flemign/CraigsFinder/craigslist"
 )
@@ -10,6 +11,15 @@ import (
 const configFile string = "config.yaml"
 
 func main() {
+	//Log setup
+	f, err := os.OpenFile("ErrorLogFile", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalf("error opening file: %v", err)
+	}
+	defer f.Close()
+
+	log.SetOutput(f)
+	log.Print("This log will contain any error messages encountered while running\n\n")
 	//load our config file and parse the values to our structs
 	cfg, err := loadConfig(configFile)
 	if err != nil {
@@ -38,8 +48,8 @@ func main() {
 
 		area := areasMap[search.Area]
 
-		fmt.Println(area.AreaID, area.Latitude, area.Longitude, search.Category, search.Term)
+		fmt.Printf("Running search on:%v, %v, %v", area.AreaID, search.Category, search.Term)
 
-		go craigslist.RunSearch(area, search)
+		craigslist.RunSearch(area, search)
 	}
 }
