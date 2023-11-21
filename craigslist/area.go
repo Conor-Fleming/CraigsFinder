@@ -1,12 +1,5 @@
 package craigslist
 
-type SubArea struct {
-	Abbreviation     string `json:"Abbreviation"`
-	Description      string `json:"Description"`
-	ShortDescription string `json:"ShortDescription"`
-	SubAreaID        int    `json:"SubAreaID"`
-}
-
 type Area struct {
 	Abbreviation     string    `json:"Abbreviation"`
 	AreaID           int       `json:"AreaID"`
@@ -19,4 +12,11 @@ type Area struct {
 	ShortDescription string    `json:"ShortDescription"`
 	SubAreas         []SubArea `json:"SubAreas"`
 	Timezone         string    `json:"Timezone"`
+}
+
+type SubArea struct {
+	Abbreviation     string `json:"Abbreviation"`
+	Description      string `json:"Description"`
+	ShortDescription string `json:"ShortDescription"`
+	SubAreaID        int    `json:"SubAreaID"`
 }

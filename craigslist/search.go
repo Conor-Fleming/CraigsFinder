@@ -8,21 +8,19 @@ import (
 )
 
 type Search struct {
-	Area     string `yaml:"area"`
+	Location string `yaml:"area"`
 	Category string `yaml:"category"`
 	Term     string `yaml:"term"`
+	Area     Area
 }
 
-type Config struct {
-	Searches []Search `yaml:"searches"`
-	APIURL   string   `yaml:"api_url"`
-}
+func RunSearch(search Search) {
+	log.Printf("Running search on:%v, %v, %v", search.Area.AreaID, search.Category, search.Term)
 
-func RunSearch(area Area, search Search) {
 	results, err := craigslist.Search(search.Category, search.Term, craigslist.LocationParams{
-		AreaID:         area.AreaID,
-		Latitude:       area.Latitude,
-		Longitude:      area.Longitude,
+		AreaID:         search.Area.AreaID,
+		Latitude:       search.Area.Latitude,
+		Longitude:      search.Area.Longitude,
 		SearchDistance: 30,
 	})
 
@@ -31,7 +29,7 @@ func RunSearch(area Area, search Search) {
 	}
 
 	if len(results) == 0 {
-		log.Printf("No results!")
+		log.Printf("Running Search %s --- No results!", search.Term)
 	}
 
 	for _, v := range results {

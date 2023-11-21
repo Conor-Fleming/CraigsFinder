@@ -8,8 +8,13 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func loadConfig(filename string) (craigslist.Config, error) {
-	var cfg craigslist.Config
+type Config struct {
+	Searches []craigslist.Search `yaml:"searches"`
+	APIURL   string              `yaml:"api_url"`
+}
+
+func loadConfig(filename string) (Config, error) {
+	var cfg Config
 	yamlFile, err := os.Open(filename)
 	if err != nil {
 		return cfg, err
