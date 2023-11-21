@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	cl "github.com/Conor-Flemign/CraigsFinder/craigslist/"
+	"github.com/Conor-Flemign/CraigsFinder/craigslist"
 )
 
 const configFile string = "config.yaml"
@@ -29,8 +29,8 @@ func main() {
 	}
 
 	//populate map with valid search areas
-	areasMap := make(map[string]cl.Area)
-	areas, err := cl.FetchAreas(cfg.APIURL)
+	areasMap := make(map[string]craigslist.Area)
+	areas, err := craigslist.FetchAreas(cfg.APIURL)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -48,7 +48,7 @@ func main() {
 
 		area := areasMap[search.Area]
 
-		fmt.Println(area, search)
+		fmt.Println(area.AreaID, area.Latitude, area.Longitude, search.Category, search.Term)
 		//format data
 		//run search
 		//
