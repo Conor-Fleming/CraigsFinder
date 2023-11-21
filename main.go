@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/Conor-Flemign/CraigsFinder/craigslist"
 )
@@ -11,15 +10,6 @@ import (
 const configFile string = "config.yaml"
 
 func main() {
-	logFile, err := os.OpenFile("error.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		fmt.Println("Error opening log file:", err)
-		return
-	}
-	defer logFile.Close()
-
-	log.SetOutput(logFile)
-
 	//load our config file and parse the values to our structs
 	cfg, err := loadConfig(configFile)
 	if err != nil {
@@ -49,8 +39,7 @@ func main() {
 		area := areasMap[search.Area]
 
 		fmt.Println(area.AreaID, area.Latitude, area.Longitude, search.Category, search.Term)
-		//format data
-		//run search
-		//
+
+		go craigslist.RunSearch(area, search)
 	}
 }

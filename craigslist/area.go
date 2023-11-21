@@ -13,8 +13,8 @@ type Area struct {
 	Country          string    `json:"Country"`
 	Description      string    `json:"Description"`
 	Hostname         string    `json:"Hostname"`
-	Latitude         float64   `json:"Latitude"`
-	Longitude        float64   `json:"Longitude"`
+	Latitude         float32   `json:"Latitude"`
+	Longitude        float32   `json:"Longitude"`
 	Region           string    `json:"Region"`
 	ShortDescription string    `json:"ShortDescription"`
 	SubAreas         []SubArea `json:"SubAreas"`

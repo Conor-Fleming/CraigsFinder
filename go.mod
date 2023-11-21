@@ -4,10 +4,14 @@ go 1.21.4
 
 require (
 	github.com/charmbracelet/bubbletea v0.24.2
+	github.com/ecnepsnai/craigslist v0.0.6
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-require github.com/atotto/clipboard v0.1.4 // indirect
+require (
+	github.com/atotto/clipboard v0.1.4 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+)
 
 require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect

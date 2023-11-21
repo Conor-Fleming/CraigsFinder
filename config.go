@@ -4,22 +4,12 @@ import (
 	"io"
 	"os"
 
+	"github.com/Conor-Flemign/CraigsFinder/craigslist"
 	"gopkg.in/yaml.v2"
 )
 
-type Search struct {
-	Area     string `yaml:"area"`
-	Category string `yaml:"category"`
-	Term     string `yaml:"term"`
-}
-
-type Config struct {
-	Searches []Search `yaml:"searches"`
-	APIURL   string   `yaml:"api_url"`
-}
-
-func loadConfig(filename string) (Config, error) {
-	var cfg Config
+func loadConfig(filename string) (craigslist.Config, error) {
+	var cfg craigslist.Config
 	yamlFile, err := os.Open(filename)
 	if err != nil {
 		return cfg, err
