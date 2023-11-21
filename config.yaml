@@ -9,7 +9,7 @@ searches:
     category: cta
     term: toyota
 
-  -area: chico
-   category: cta
-   term: hellcat
+  - area: chico
+    category: cta
+    term: hellcat
 

@@ -1,0 +1,5 @@
+package craigslist
+
+func RunSearch() {
+
+}
