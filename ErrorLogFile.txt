@@ -1,0 +1,54 @@
+2023/11/20 20:28:00 This log will contain any error messages encountered while running
+
+2023/11/20 20:29:20 This log will contain any error messages encountered while running
+
+2023/11/20 20:31:16 This log will contain any error messages encountered while running
+
+2023/11/20 20:31:18 there was an error getting the posting details: json: cannot unmarshal number 27714.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 14:52:54 This log will contain any error messages encountered while running
+
+2023/11/21 14:52:55 there was an error getting the posting details: no posting found
+2023/11/21 14:58:15 This log will contain any error messages encountered while running
+
+2023/11/21 14:58:16 there was an error getting the posting details: no posting found
+2023/11/21 14:58:17 there was an error getting the posting details: json: cannot unmarshal number 11998.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 14:58:19 there was an error getting the posting details: json: cannot unmarshal number 15450.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 14:58:20 there was an error getting the posting details: json: cannot unmarshal number 18995.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 14:58:20 there was an error getting the posting details: json: cannot unmarshal number 17995.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:03:36 This log will contain any error messages encountered while running
+
+2023/11/21 15:03:37 there was an error getting the posting details: no posting found
+2023/11/21 15:03:37 there was an error getting the posting details: json: cannot unmarshal number 11998.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:03:39 there was an error getting the posting details: json: cannot unmarshal number 15450.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:03:39 there was an error getting the posting details: json: cannot unmarshal number 18995.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:03:39 there was an error getting the posting details: json: cannot unmarshal number 17995.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:03:39 there was an error getting the posting details: json: cannot unmarshal number 14999.0 into Go struct field Posting.data.items.price of type int
+2023/11/21 15:55:28 This log will contain any error messages encountered while running
+
+2023/11/21 15:55:29 there was an error getting the posting details: no posting found
+2023/11/21 15:56:20 This log will contain any error messages encountered while running
+
+2023/11/21 15:56:21 there was an error getting the posting details: no posting found
+2023/11/21 15:58:10 This log will contain any error messages encountered while running
+
+2023/11/21 15:58:11 there was an error getting the posting details: no posting found
+2023/11/21 15:58:33 This log will contain any error messages encountered while running
+
+2023/11/21 15:58:34 there was an error getting the posting details: no posting found
+2023/11/21 15:58:54 This log will contain any error messages encountered while running
+
+2023/11/21 15:59:01 This log will contain any error messages encountered while running
+
+2023/11/21 15:59:02 there was an error getting the posting details: no posting found
+2023/11/21 15:59:36 This log will contain any error messages encountered while running
+
+2023/11/21 15:59:41 This log will contain any error messages encountered while running
+
+2023/11/21 16:01:24 This log will contain any error messages encountered while running
+
+2023/11/21 16:02:14 This log will contain any error messages encountered while running
+
+2023/11/21 16:03:10 This log will contain any error messages encountered while running
+
+2023/11/21 16:03:41 This log will contain any error messages encountered while running
+

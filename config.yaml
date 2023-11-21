@@ -3,17 +3,17 @@ api_url: http://reference.craigslist.org/Areas
 searches:
   - area: sfbay
     category: cta
-    term: honda
+    term: 2020 honda accord
    
-  - area: seattle
-    category: cta
-    term: toyota
+  #- area: seattle
+  #  category: cta
+  #  term: toyota
 
-  - area: chico
-    category: cta
-    term: hellcat
+  #- area: chico
+  #  category: cta
+  #  term: hellcat
 
-  - area: bleh
-    category: cta
-    term: hellcat
+  #- area: bleh
+  #  category: cta
+  #  term: hellcat
 

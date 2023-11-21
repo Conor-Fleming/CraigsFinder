@@ -4,7 +4,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/Conor-Flemign/CraigsFinder/craigslist"
+	"github.com/Conor-Fleming/CraigsFinder/craigslist"
 	"gopkg.in/yaml.v2"
 )
 

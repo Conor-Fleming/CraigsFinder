@@ -2,6 +2,7 @@ package craigslist
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/ecnepsnai/craigslist"
 )
@@ -26,21 +27,21 @@ func RunSearch(area Area, search Search) {
 	})
 
 	if err != nil {
-		panic(err)
+		log.Printf("there was an error running the search: %v", err)
 	}
 
 	if len(results) == 0 {
-		fmt.Printf("No results!")
+		log.Printf("No results!")
 	}
 
 	for _, v := range results {
 		posting, err := v.Posting()
 		if err != nil {
-			panic(err)
+			log.Printf("there was an error getting the posting details: %v", err)
+			continue
 		}
 
-		fmt.Printf("%s - $%d\n", posting.Title, posting.Price)
+		fmt.Printf("%s - $%v - %v\n", posting.Title, posting.Price, posting.URL)
 		fmt.Printf("--------\n")
-		fmt.Printf("%s\n", posting.Body)
 	}
 }

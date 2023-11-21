@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Conor-Flemign/CraigsFinder/craigslist"
+	"github.com/Conor-Fleming/CraigsFinder/craigslist"
 )
 
 const configFile string = "config.yaml"
