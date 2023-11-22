@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"io"
@@ -13,8 +13,9 @@ type Config struct {
 	APIURL   string              `yaml:"api_url"`
 }
 
-func loadConfig(filename string) (Config, error) {
-	var cfg Config
+func LoadConfig(filename string) (Config, error) {
+	//declaring empty Config object
+	cfg := Config{}
 	yamlFile, err := os.Open(filename)
 	if err != nil {
 		return cfg, err
@@ -26,6 +27,7 @@ func loadConfig(filename string) (Config, error) {
 		return cfg, err
 	}
 
+	//unmarshal data from yaml file into our struct
 	err = yaml.Unmarshal(yamlBytes, &cfg)
 	if err != nil {
 		return cfg, err

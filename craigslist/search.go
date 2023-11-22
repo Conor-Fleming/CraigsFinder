@@ -15,7 +15,6 @@ type Search struct {
 }
 
 func RunSearch(search Search) {
-	log.Printf("Running search on:%v, %v, %v", search.Area.AreaID, search.Category, search.Term)
 
 	results, err := craigslist.Search(search.Category, search.Term, craigslist.LocationParams{
 		AreaID:         search.Area.AreaID,

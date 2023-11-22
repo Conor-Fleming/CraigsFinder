@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/Conor-Fleming/CraigsFinder/config"
 	"github.com/Conor-Fleming/CraigsFinder/craigslist"
 )
 
@@ -22,7 +23,7 @@ func main() {
 	log.Print("This log will contain any error messages encountered while running\n\n")
 
 	//load our config file and parse the values to our structs
-	cfg, err := loadConfig(configFile)
+	cfg, err := config.LoadConfig(configFile)
 	if err != nil {
 		fmt.Println("Error loading config:", err)
 		return
@@ -41,19 +42,15 @@ func main() {
 	}
 
 	//verifying the configured search locations are valid craigslist locations
-	searchesToRun := make([]craigslist.Search, 0)
-	for _, search := range cfg.Searches {
-		if _, ok := areasMap[search.Location]; !ok {
-			log.Printf("Area '%s' is not available for search. Skipping...", search.Location)
-			continue
-		}
+	searchesToRun := verifySearchParams(cfg, areasMap)
 
-		//populate area field of search object and add to slice
-		search.Area = areasMap[search.Location]
-		searchesToRun = append(searchesToRun, search)
+	//setup search logs and defer closure
+	for _, v := range searchesToRun {
+		initLogger(v.Term)
 	}
+	defer closeLoggers()
 
-	//spin off go routines to run each search
+	//setup logs & spin off go routines to run each search
 	for _, search := range searchesToRun {
 		go craigslist.RunSearch(search)
 	}
