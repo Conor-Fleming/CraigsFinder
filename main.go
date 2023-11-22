@@ -7,6 +7,7 @@ import (
 
 	"github.com/Conor-Fleming/CraigsFinder/config"
 	"github.com/Conor-Fleming/CraigsFinder/craigslist"
+	"github.com/Conor-Fleming/CraigsFinder/logs"
 )
 
 const configFile string = "config.yaml"
@@ -27,12 +28,13 @@ func main() {
 	if err != nil {
 		fmt.Println("Error loading config:", err)
 		return
-
 	}
 
 	//populate map with valid search areas
 	areasMap := make(map[string]craigslist.Area)
-	areas, err := craigslist.FetchAreas(cfg.APIURL)
+	// debugging with this area struct while im blocked from requesting craigslist api
+	areas := []craigslist.Area{{Hostname: "test"}, {Hostname: "test 2"}, {Hostname: "sfbay"}}
+	//areas, err := craigslist.FetchAreas(cfg.APIURL)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -45,13 +47,22 @@ func main() {
 	searchesToRun := verifySearchParams(cfg, areasMap)
 
 	//setup search logs and defer closure
-	for _, v := range searchesToRun {
-		initLogger(v.Term)
+	err = os.MkdirAll("Searches/", os.ModePerm)
+	if err != nil {
+		log.Print("could not open searches directory", err)
 	}
-	defer closeLoggers()
+
+	for _, v := range searchesToRun {
+		logs.InitLogger(v.Term)
+	}
+	defer logs.CloseLoggers()
 
 	//setup logs & spin off go routines to run each search
 	for _, search := range searchesToRun {
-		go craigslist.RunSearch(search)
+		//go craigslist.RunSearch(search)
+		logs.LogTo(search.Term, "testing search log")
+		fmt.Println("run", search)
 	}
+
+	fmt.Println("done")
 }

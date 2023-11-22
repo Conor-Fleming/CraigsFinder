@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/Conor-Fleming/CraigsFinder/config"
@@ -14,11 +15,12 @@ func verifySearchParams(cfg config.Config, areasMap map[string]craigslist.Area) 
 			log.Printf("Area '%s' is not available for search. Skipping...", search.Location)
 			continue
 		}
-
+		fmt.Println(search)
 		//populate area field of search object and add to slice
-		search.Area = areasMap[search.Location]
+		search.Region = areasMap[search.Location]
 		searchesToRun = append(searchesToRun, search)
 	}
 
+	fmt.Println("Here")
 	return searchesToRun
 }

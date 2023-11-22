@@ -3,7 +3,9 @@ package craigslist
 import (
 	"fmt"
 	"log"
+	"time"
 
+	"github.com/Conor-Fleming/CraigsFinder/logs"
 	"github.com/ecnepsnai/craigslist"
 )
 
@@ -11,15 +13,15 @@ type Search struct {
 	Location string `yaml:"area"`
 	Category string `yaml:"category"`
 	Term     string `yaml:"term"`
-	Area     Area
+	Region   Area
 }
 
 func RunSearch(search Search) {
-
+	logs.LogTo(search.Term, fmt.Sprintf("Starting search for %s", search.Term))
 	results, err := craigslist.Search(search.Category, search.Term, craigslist.LocationParams{
-		AreaID:         search.Area.AreaID,
-		Latitude:       search.Area.Latitude,
-		Longitude:      search.Area.Longitude,
+		AreaID:         search.Region.AreaID,
+		Latitude:       search.Region.Latitude,
+		Longitude:      search.Region.Longitude,
 		SearchDistance: 30,
 	})
 
@@ -28,7 +30,7 @@ func RunSearch(search Search) {
 	}
 
 	if len(results) == 0 {
-		log.Printf("Running Search %s --- No results!", search.Term)
+		logs.LogTo(search.Term, fmt.Sprintf("Running Search %s --- No results!", time.Now()))
 	}
 
 	for _, v := range results {
